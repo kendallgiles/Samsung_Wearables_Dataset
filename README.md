@@ -1,8 +1,11 @@
 Samsung Wearables Dataset Cleaning Scripts
-Version 1.0
-By: Kendall Giles
-www.kendallgiles.com
 ==========================================
+
+* Version 1.0
+* By: Kendall Giles
+* www.kendallgiles.com
+
+
 
 This project contains scripts to clean the [Human Activity Recognition Using Smartphones Data Set](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones). This dataset contains recorded values of 30 test subjects performing a variety of activities while wearing a Samsung smartphone with embedded intertial sensors. 
 
