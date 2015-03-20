@@ -37,55 +37,6 @@ The tidy dataset was made from the above dataframe using the group_by() function
 
 The resulting 180 x 68 dataframe was exported using write.table().
 
-#
-# 3. Uses descriptive activity names to name the activities in the data set
-# Note: Interpreted to mean use activity name instead of activity ID
-#
-
-train.class.labels <- read.table("./UCI HAR Dataset/train/y_train.txt")
-test.class.labels <- read.table("./UCI HAR Dataset/test/y_test.txt")
-activity.labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
-
-train.class.descriptions <- cut(c(train.class.labels$V1,test.class.labels$V1), breaks=nrow(activity.labels), labels=activity.labels$V2)
-
-train.test <- cbind(train.test, train.class.descriptions)
-
-# > dim(train.test)
-# [1] 10299    68
-
-#
-# 4. Appropriately labels the data set with descriptive variable names. 
-#
-
-features$V2[desired.cols]
-
-column.names <- c(features$V2[desired.cols], "Subject_ID", "Class_Description")
-
-names(train.test) <- column.names
-
-#
-# 5. From the data set in step 4, creates a second, independent tidy data set with the average of 
-# each variable for each activity and each subject.
-#
-
-# 30 subjects
-# 6 activities
-# 66 vars
-#
-# 180 rows, 66 var cols + subect id + activity --> 68 cols
-# col 67 == subject id
-# col 68 == class description
-
-grouped.data <- group_by(train.test, Subject_ID, Class_Description)
-
-tidy.dataset <- summarise_each(grouped.data, funs(mean))
-
-# > dim(tidy.dataset)
-# [1] 180  68
-
-write.table(tidy.dataset, "./tidy_dataset.txt", row.name=FALSE)
-
-
 
 # List of the 68 Variable Names in the tidy dataset:
 
